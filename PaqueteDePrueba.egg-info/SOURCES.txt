@@ -1,0 +1,6 @@
+setup.py
+PaqueteDePrueba.egg-info/PKG-INFO
+PaqueteDePrueba.egg-info/SOURCES.txt
+PaqueteDePrueba.egg-info/dependency_links.txt
+PaqueteDePrueba.egg-info/top_level.txt
+paquete/__initi__.py
