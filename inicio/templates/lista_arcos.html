@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de arcos</title>
+</head>
+<body>
+    <h2>Lista de arcos</h2>
+    <ul>
+        {% for arco in arcos %}
+            <li>Marca: {{ arco.marca }} | Modelo: {{ arco.modelo }} | Potencia: {{ arco.potencia }} libras | Tipo: {{ arco.tipo }} | Precio: ${{ arco.precio }}</li>
+        {% empty %}
+            <li>No hay arcos cargados.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
