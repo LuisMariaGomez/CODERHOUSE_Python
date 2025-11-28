@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar arco{% endblock %}
+
+{% block contenido %}
+
+<form method="POST" action="{% url 'eliminar_arco' arco.id %}">
+    {% csrf_token %}
+    {{ form }}
+    <h2>Confirmar borrado</h2>
+    <p>¿Estás seguro de que deseas eliminar el arco "{{ arco.marca }} {{ arco.modelo }} ({{ arco.potencia }} libras) {{ arco.precio }} {{ arco.tipo }}"?</p>
+    <input type="submit" value="Confirmar borrado">
+</form>
+
+{% endblock %}

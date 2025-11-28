@@ -1,19 +1,26 @@
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de arcos</title>
-</head>
-<body>
-    <h2>Lista de arcos</h2>
-    <ul>
-        {% for arco in arcos %}
-            <li>Marca: {{ arco.marca }} | Modelo: {{ arco.modelo }} | Potencia: {{ arco.potencia }} libras | Tipo: {{ arco.tipo }} | Precio: ${{ arco.precio }}</li>
-        {% empty %}
-            <li>No hay arcos cargados.</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% block title %}Lista de Arcos{% endblock %}
+
+{% block contenido %}
+
+<h2>Lista de arcos</h2>
+<form action="{% url 'lista_arcos' %}" method="GET">
+    {{formulario}}
+    <input type="submit" value="Buscar">
+</form>
+{% if arcos %}
+<ul>
+    {% for arco in arcos %}
+        <li>
+            Marca: {{ arco.marca }} | Modelo: {{ arco.modelo }} | Potencia: {{ arco.potencia }} libras | Tipo: {{ arco.tipo }} | Precio: ${{ arco.precio }}</li> 
+            | <a href="{% url 'ver_arco' arco.id %}">Ver Detalles</a> 
+            | <a href="{% url 'editar_arco' arco.id %}">Editar</a> 
+            | <a href="{% url 'eliminar_arco' arco.id %}">Eliminar</a>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No se encontraron arcos</p>
+{% endif %}
+
+{% endblock %}

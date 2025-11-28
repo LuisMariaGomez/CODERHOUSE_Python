@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Edicion de arco{% endblock %}
+
+{% block contenido %}
+
+<form method="POST" action="{% url 'editar_arco' arco.id %}">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Actualiizar Arco">
+</form>
+
+{% endblock %}

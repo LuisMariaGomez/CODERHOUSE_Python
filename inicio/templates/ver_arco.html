@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de arco{% endblock %}
+
+{% block contenido %}
+
+<h2>Detalle del Arco</h2>
+<p><strong>Marca:</strong> {{ arco.marca }}</p>
+<p><strong>Modelo:</strong> {{ arco.modelo }}</p>
+<p><strong>Potencia:</strong> {{ arco.potencia }} libras</p>
+<p><strong>Tipo:</strong> {{ arco.tipo }}</p>
+<p><strong>Precio:</strong> ${{ arco.precio }}</p>
+
+{% endblock %}

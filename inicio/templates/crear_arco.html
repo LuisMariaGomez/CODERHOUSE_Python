@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creacion Arco</title>
-</head>
-<body>
-    <h1> Se creo un nuevo arco</h1>
-    <h2> Caracteristicas:</h2>
-    <ul>
-        <li>Marca: {{ arco_guardado.marca }}</li>
-        <li>Modelo: {{ arco_guardado.modelo }}</li>
-        <li>Portencia: {{ arco_guardado.portencia }}</li>
-        <li>Precio: {{ arco_guardado.precio }}</li>
-        <li>Tipo: {{ arco_guardado.tipo }}</li>
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Crear Arco{% endblock %} 
+
+{% block contenido %}
+
+<form method="POST" action="{% url 'crear_arco' %}">
+    {% csrf_token %}
+    {{ formulario }}
+    <input type="submit" value="Crear Arco">
+</form>
+
+
+
+{% endblock %}

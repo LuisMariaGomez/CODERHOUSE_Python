@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            <li><a href="{% url 'crear_arco' %}">Crear Arco</a></li>
+            <li><a href="{% url 'lista_arcos' %}">Lista de Arcos</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block contenido %}
+        {% endblock %}
+    </main>
+</body>
+</html>
