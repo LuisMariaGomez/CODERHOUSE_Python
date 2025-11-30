@@ -10,5 +10,11 @@
 <p><strong>Potencia:</strong> {{ arco.potencia }} libras</p>
 <p><strong>Tipo:</strong> {{ arco.tipo }}</p>
 <p><strong>Precio:</strong> ${{ arco.precio }}</p>
+<p><strong>Imagen:</strong></p>
+{%if arco.imagen %}
+<img src="{{ arco.imagen.url }}" alt="Imagen del arco {{ arco.modelo }}" style="max-width:400px; height:auto;">
+{% else %}
+<p>No hay imagen disponible.</p>
+{% endif %}
 
 {% endblock %}

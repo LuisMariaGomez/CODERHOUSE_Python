@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-<form method="POST" action="{% url 'editar_arco' arco.id %}">
+<form method="POST" action="{% url 'editar_arco' arco.id %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Actualiizar Arco">

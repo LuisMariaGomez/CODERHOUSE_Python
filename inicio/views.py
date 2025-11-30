@@ -4,13 +4,17 @@ from inicio.models import Arco
 from inicio.forms import CrearArco, BuscarArcoForm
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 
 def inicio (request):
     return render(request, 'inicio.html')
 
+@login_required
 def crear_arco(request):
     if request.method == 'POST':
-        formulario = CrearArco(request.POST)
+        formulario = CrearArco(request.POST, request.FILES)
         if formulario.is_valid():
             datos = formulario.cleaned_data
             arco = Arco(
@@ -18,7 +22,8 @@ def crear_arco(request):
                 modelo=datos['modelo'],
                 potencia=datos['potencia'],
                 precio=datos['precio'],
-                tipo=datos['tipo']
+                tipo=datos['tipo'],
+                imagen=datos['imagen'],
             )
             arco.save()
             return redirect('lista_arcos')
@@ -44,13 +49,13 @@ def ver_arco(request, arco_id):
     arco = Arco.objects.get(id=arco_id)
     return render(request, 'ver_arco.html', {'arco': arco})
 
-class EditarArco(UpdateView):
+class EditarArco(LoginRequiredMixin, UpdateView):
     model = Arco
     template_name = 'editar_arco.html'
     success_url = reverse_lazy('lista_arcos')
     fields = '__all__'
 
-class EliminarArco(DeleteView):
+class EliminarArco(LoginRequiredMixin, DeleteView):
     model = Arco
     template_name = 'eliminar_arco.html'
     success_url = reverse_lazy('lista_arcos')

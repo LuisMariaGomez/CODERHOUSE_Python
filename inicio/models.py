@@ -5,6 +5,7 @@ class Arco(models.Model):
     potencia = models.IntegerField()
     precio = models.FloatField()
     tipo = models.CharField(max_length=50)
+    imagen = models.ImageField(upload_to='imagenes_arcos', null=True, blank=True)
 
     def __str__(self):
-        return f"{self.marca} {self.modelo} ({self.portencia}) - {self.tipo} (${self.precio})"
+        return f"{self.marca} {self.modelo} ({self.potencia}) - {self.tipo} (${self.precio})"

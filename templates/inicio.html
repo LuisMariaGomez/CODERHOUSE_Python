@@ -4,6 +4,10 @@
 
 {% block contenido %}
 
-<h1>Bienvenidos a la página de inicio</h1>
+{% if request.user.is_authenticated %}
+    <h1>Bienvenidos a la página de inicio {{request.user}}</h1>
+{% else %}
+    <h1>Bienvenidos a la página de inicio</h1>
+{% endif %}
 
 {% endblock %}
