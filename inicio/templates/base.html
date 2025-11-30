@@ -6,19 +6,21 @@
     <title>
         {% block title %}{% endblock %}
     </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav>
+    <nav id="nav">
         <ul>
             <li><a href="{% url 'inicio' %}">Inicio</a></li>
             <li><a href="{% url 'crear_arco' %}">Crear Arco</a></li>
             <li><a href="{% url 'lista_arcos' %}">Lista de Arcos</a></li>
             {% if request.user.is_authenticated %}
                 <li><a href="#">{{request.user}}</a></li>
-                <form action="{% url 'cerrar_sesion' %}" method="post">
+                <form  id="cerrar_sesion" action="{% url 'cerrar_sesion' %}" method="post">
                     {% csrf_token %}
-                <input type="submit" value="Cerrar Sesion">
-            </form>
+                    <input type="submit" value="Cerrar Sesion">
+                </form>
             {% else %}
                 <li><a href="{% url 'iniciar_sesion' %}">Iniciar Sesion</a></li>
                 <li><a href="{% url 'registro_usuario' %}">Registrarse</a></li>
