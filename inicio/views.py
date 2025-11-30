@@ -59,3 +59,6 @@ class EliminarArco(LoginRequiredMixin, DeleteView):
     model = Arco
     template_name = 'eliminar_arco.html'
     success_url = reverse_lazy('lista_arcos')
+
+def sobre_mi(request):
+    return render(request, 'sobre_mi.html')

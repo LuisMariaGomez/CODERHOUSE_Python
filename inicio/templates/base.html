@@ -15,8 +15,9 @@
             <li><a href="{% url 'inicio' %}">Inicio</a></li>
             <li><a href="{% url 'crear_arco' %}">Crear Arco</a></li>
             <li><a href="{% url 'lista_arcos' %}">Lista de Arcos</a></li>
+            <li><a href="{% url 'sobre_mi' %}">Sobre mi</a></li>
             {% if request.user.is_authenticated %}
-                <li><a href="#">{{request.user}}</a></li>
+                <li><a href="#">Usuario: {{request.user}}</a></li>
                 <form  id="cerrar_sesion" action="{% url 'cerrar_sesion' %}" method="post">
                     {% csrf_token %}
                     <input type="submit" value="Cerrar Sesion">
